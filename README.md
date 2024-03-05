@@ -1,79 +1,65 @@
-# Guide d'utilisation du script `query.py`
-
-/!\ Modification régulière peut ne pas marcher ou etre à jour /!\
-
-Ce guide explique comment utiliser le script `query.py` pour interagir avec ma base de données simplifiée via des commandes en ligne de commande. Le script permet de créer des tables, d'ajouter des enregistrements, de les afficher et de les supprimer de différentes manières.
-
 ## Prérequis
 
-Assurez-vous d'avoir Python installé sur votre système pour exécuter le script.
+Assurez-vous d'avoir Python 3.9 ou supérieur installé sur votre système
+Assurez-vous egalement avoir importer le package PyFQL
+```bash
+pip install PyFQL
+```
+url: https://pypi.org/project/PyFQL/
 
-## Exécution du script
+## Exemple
 
-Pour lancer le script, ouvrez un terminal ou une invite de commandes, accédez au répertoire contenant le fichier `query.py` et exécutez la commande suivante :
+le script main.py vous permet de tester rapidement le package
 
 ```bash
-python query.py
+python main.py
+
+(PyFQL)>>>
 ```
 
 ## Commandes disponibles
 
 Le script prend en charge les commandes suivantes :
 
-- `creer table [nom_table]`: Crée une nouvelle table dans la base de données.
-- `ajoute [nom_table] [attributs]`: Ajoute un enregistrement à une table existante.
-- `supprime [nom_table] [options]`: Supprime des enregistrements ou une table entière de la base de données.
-- `affiche [nom_table]`: Affiche le contenu d'une table.
+- `creer la bdd [nom_bdd]`: Crée une nouvelle base de données fichier .json.
+- `supprime la bdd [nom_bdd]`: Supprime la base de données fichier .json.
+
+- `creer la table [nom_table]`: Crée une nouvelle table dans la base de données.
+- `supprime la [nom_table] [options]`: Supprime des enregistrements ou une table entière de la base de données.
+
+- `affiche la table [nom_table]`: Affiche le contenu d'une table.
 - `exit` ou `quit`: Quitte le programme.
 
 ## Exemples de requêtes
 
 Voici des exemples de requêtes que vous pouvez exécuter dans le script :
 
-1. **Création d'une table** :
+1. **Création d'une bdd** :
    ```bash
-   creer table voiture
+   creer la bdd garage
    ```
 
-2. **Ajout d'un enregistrement** :
+2. **Utiliser une bdd spécifique** :
    ```bash
-   ajoute voiture marque=Toyota modele=Corolla annee=2020 couleur=bleu
+   utilise la bdd garage
    ```
 
-3. **Affichage du contenu d'une table** :
+3. **Création d'une table** :
    ```bash
-   affiche voiture
+   creer la table voiture
    ```
 
-4. **Suppression d'un enregistrement par index** :
+4. **supprimer une bdd** :
    ```bash
-   supprime voiture 0
+   supprime la bdd garage
    ```
 
-5. **Suppression d'un champ spécifique d'un enregistrement** :
+5. **supprimer une table** :
    ```bash
-   supprime voiture 0 couleur
+   supprime la table voiture
    ```
 
-6. **Suppression de tous les enregistrements d'une table** :
-   ```bash
-   supprime voiture tous
-   ```
-
-7. **Suppression d'une table entière** :
-   ```bash
-   supprime voiture
-   ```
-
-## Fonctionnement du script
-
-Le script utilise une classe `Database` pour gérer la base de données. Voici un aperçu de ses principales méthodes :
-
-- `create_table`: Crée une nouvelle table dans la base de données.
-- `insert`: Insère un nouvel enregistrement dans une table existante.
-- `delete`: Supprime des enregistrements ou une table entière de la base de données.
-- `display_table`: Affiche le contenu d'une table.
-- `execute_query`: Analyse et exécute les commandes fournies par l'utilisateur.
+**Ceci est toujour en dévelopement merci de votre comprehension**
 
 ## Phrase type traiter en language naturel sans library externe
 - [creer] la [table]/[bdd] [VARIABLE]       
@@ -102,4 +88,12 @@ RESERVER IGNORE RESERVER VARIABLE IGNORE RESERVER IGNORE RESERVER VARIABLE
 --
 ## Conclusion
 
-Ce guide devrait vous aider à comprendre comment utiliser le script `query.py` pour interagir avec une base de données simple via des commandes en ligne de commande. Si vous avez des questions ou des problèmes, n'hésitez pas à demander de l'aide à ce mail yannbanas@gmail.com.
+Ce guide devrait vous aider à comprendre comment utiliser mon package pour interagir avec une base de données principalement (KeysDB) via des phrase en language naturel en frencais. Si vous avez des questions ou des problèmes, n'hésitez pas à demander de l'aide à ce mail yannbanas@gmail.com.
+
+## build from source
+
+mettez vous a la racine du projet et executer
+
+```bash
+pip install -e .
+```

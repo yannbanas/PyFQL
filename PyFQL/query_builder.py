@@ -1,5 +1,5 @@
-from pattern import Pattern
-from execption.custom_execption import InvalideQueryPattern
+from .pattern import Pattern
+from .execption.custom_execption import InvalideQueryPattern
 
 class QueryBuilder:
     def __init__(self, database_instance):

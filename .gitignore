@@ -1,5 +1,11 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+PyFQL/__pycache__/
+PyFQL/PyFQL/__pycache__/
+PyFQL/PyFQL/execption/__pycache__/
+PyFQL/PyFQL/db/*.json
+PyFQL/PyFQL/main.py
+
 *.py[cod]
 *$py.class
 

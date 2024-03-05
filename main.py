@@ -1,10 +1,8 @@
-from pattern import Pattern
-from execption.custom_execption import InvalideQueryPattern
-from database import Database
-from query_builder import QueryBuilder
+from PyFQL import Database, QueryBuilder
 
-db_instance = Database()
+db_instance = Database("D:\\test_db\\")
 query_builder_instance = QueryBuilder(db_instance)
+
 
 while True:
     phrase = input("(PyFQL)>>> ")
