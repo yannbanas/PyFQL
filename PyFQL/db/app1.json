@@ -1,0 +1,14 @@
+{
+    "voiture": {
+        "1": {
+            "marque": "Dacia",
+            "modele": "Sandero",
+            "annee": 2008
+        },
+        "2": {
+            "marque": "Dacia",
+            "modele": "Duster",
+            "annee": 2009
+        }
+    }
+}

@@ -1,0 +1,43 @@
+créer la table users
+creer la bdd user
+utilise la bdd user
+supprime la table user
+supprime la bdd user
+supprime le champ age de la table user
+supprime les lignes de la table user
+supprime la ligne 0 de la table user
+modifie la table user pour ajoute le champ age
+renomme la table user en users
+modifie la table user et ajoute le champ poids a la position 0
+
+
+ mots_et_categories = [(mot, identifier_mot(mot)) for mot in phrase.split()]
+
+    try:
+        # Vérification du motif
+        if is_allowed(mots_et_categories):
+            pass
+        else:
+            raise InvalideQueryPattern
+    except InvalideQueryPattern as e:
+        print(e.message)
+
+    if phrase == "test":
+        db.create_db("app1")
+        db.select_db("app1")  # Sélectionner la base de données 'test'
+        db.create_table("voiture")  # Créer une table dans la base de données sélectionnée
+        #db.create_table("user")  # Créer une autre table dans la même base de données
+        #db.show_db()
+        #db.show_table()
+        db.insert("voiture", {"marque": "Dacia", "modele": "Sandero", "annee": 2008})
+        db.insert("voiture", {"marque": "Dacia", "modele": "Duster", "annee": 2009})
+        #db.insert("user", {"nom": "Jean", "age": 25})
+        #db.insert("user", {"nom": "Pierre", "age": 30})
+        #db.show_records("voiture")
+        #db.show_records("user")
+        #db.delete_record("user", 1)
+        #db.delete_record("voiture", 2)
+        db.show_records("voiture")
+        #db.show_records("user")
+
+        #db.show_record_by_id("user", 2)
