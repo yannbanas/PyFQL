@@ -8,5 +8,5 @@ while True:
     phrase = input("(PyFQL)>>> ")
     query_builder_instance.query = phrase
     query_builder_instance.execute()
-    if phrase in ["quit", "exit", "q", "bye"]:
+    if phrase in ["q", "exit", "bye", "quit"]:
         break

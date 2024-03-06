@@ -21,7 +21,7 @@ class QueryBuilder:
 
     def execute(self):
         mots_et_categories = self.build_query(self.query)
-        #print("execute mots_et_categories: ", mots_et_categories)
+        print("execute mots_et_categories: ", mots_et_categories)
         actions = []
         reserves = []
         variables = []
@@ -36,11 +36,18 @@ class QueryBuilder:
         
         action_str = self.pattern_handler.formes_conjuguees_lemmes.get(action_str) # recupere le lemme mot en (er) a partir du mot brute
 
-        reserve_str = reserves[0]
-        variable_str = f'"{variables[-1]}"' or None
+        if reserves:
+            reserve_str = reserves[0]
+        else:
+            reserve_str = mots_et_categories[0][0]
+
+        if variables:  # Vérifier si la liste variables n'est pas vide
+            variable_str = f'"{variables[-1]}"'
+        else:
+            variable_str = None
         action_str = self.pattern_handler.lemme_to_english.get(action_str) # recupere le mot en anglais a partir du lemme
         reserve_str = self.pattern_handler.lemme_to_english.get(reserve_str, reserve_str)
-        #print(f"3 action_str: {action_str}")
+        print(f"3 action_str anglais: {action_str}")
         self.execute_db_action(action_str, reserve_str, variable_str)
         #print(f"Query OK !")
 
@@ -48,6 +55,8 @@ class QueryBuilder:
         database_methods = {
             "create_db": self.database_instance.create_db,
             "delete_db": self.database_instance.delete_db,
+            "use_db": self.database_instance.use_db,
+            "show_db": self.database_instance.show_db,
         }
 
         full_action_str = f"{action_str}_{reserve_str}"
@@ -57,10 +66,20 @@ class QueryBuilder:
             action_function = database_methods.get(full_action_str)
             
             if action_function:
-                print(f"Exécution de {full_action_str}({variable_str})")
-                # Appeler la fonction avec le paramètre variable_str
-                action_function(variable_str.strip('"'))  # Retirer les guillemets doubles
+                # Vérifier si la méthode prend des arguments
+                if variable_str:
+                    # Si la méthode prend un argument, s'assurer qu'il est fourni avant de l'appeler
+                    action_function(variable_str.strip('"'))
+                    #print(f"Exécution de {full_action_str}({variable_str})")
+                else:
+                    # Si la méthode ne prend pas d'argument, appeler la méthode sans passer de paramètre
+                    action_function()
+                    #print(f"Exécution de {full_action_str}()")
             else:
                 print(f"Aucune méthode associée à l'action {full_action_str}")
         else:
             print("Action non prise en charge.")
+
+
+
+

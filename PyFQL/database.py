@@ -80,7 +80,7 @@ class Database:
             db_name = os.path.basename(db_file).split(".json")[0]
             print(db_name)
 
-    def select_db(self, db_name):
+    def use_db(self, db_name):
         db_file = os.path.join(self.path, db_name + ".json")
         
         if db_file in self.databases:
@@ -204,7 +204,7 @@ class Database:
                 print("Table {} does not exist.".format(table_name))
         else:
             print("No database selected.")
-
+    
     def _save_db(self, file_path):
         with open(file_path, 'w') as f:
             json.dump(self.databases[file_path], f, indent=4)

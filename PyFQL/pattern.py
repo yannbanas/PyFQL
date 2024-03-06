@@ -5,6 +5,7 @@ class Pattern:
         self.pattern_allowed = {
             "RESERVER": "ALLOWED",
             "ACTION": "ALLOWED",
+            "ACTION IGNORE RESERVER": "ALLOWED",
             "ACTION IGNORE RESERVER VARIABLE": "ALLOWED",
             "ACTION IGNORE RESERVER VARIABLE IGNORE VARIABLE": "ALLOWED",
             "ACTION IGNORE RESERVER IGNORE IGNORE RESERVER VARIABLE": "ALLOWED",
@@ -23,6 +24,13 @@ class Pattern:
             "créée": "creer",
             "créées": "creer",
             "créés": "creer",
+            "affiches": "afficher",
+            "affichez": "afficher",
+            "affiche": "afficher",
+            "affiché": "afficher",
+            "affichée": "afficher",
+            "affichées": "afficher",
+            "affichés": "afficher",
             "utilises": "utiliser",
             "utilisez": "utiliser",
             "utilise": "utiliser",
@@ -59,13 +67,14 @@ class Pattern:
             "renommées": "renommer",
             "renommés": "renommer",
             "quit": "quitter",
+            "q": "quitter",
             "exit": "quitter",
-            "quitter": "quitter",
             "bye": "quitter",
         }
 
         self.lemme_to_english = {
             "creer": "create",
+            "afficher": "show",
             "utiliser": "use",
             "supprimer": "delete",
             "ajouter": "insert",
@@ -77,6 +86,7 @@ class Pattern:
 
         self.correspondances = {
             "creer": "ACTION",
+            "afficher": "ACTION",
             "utiliser": "ACTION",
             "table": "RESERVER",
             "bdd": "RESERVER",
@@ -87,7 +97,7 @@ class Pattern:
             "champ": "RESERVER",
             "ligne": "RESERVER",
             "lignes": "RESERVER",
-            "quitter": "RESERVER",
+            "quitter": "ACTION",
             "test": "RESERVER",
             "debug": "RESERVER",
 
